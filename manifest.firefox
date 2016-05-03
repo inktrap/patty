@@ -1,0 +1,9 @@
+
+{
+  "applications": {
+    "gecko": {
+      "id": "extension-patty@inktrap.org",
+      "strict_min_version": "45.0"
+    }
+  }
+}
