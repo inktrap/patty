@@ -1,14 +1,18 @@
 # Bugs
 
- - :tada:
-
+ - use firefox version check so a recent version is used (45 is not working)
+ - <s> none :tada: </s>
 
 # ToDo
 
+ - signing and mozilla/chrome addon account
+ - FEATURE: write import and export to json feature. prepare json files (trump, cyber, cloud)
  - be proud & happy!!! first addon :) yay <3 :tada: :clap: :smile:
+
+# Maybe
+
  - styling?
  - test with safari and opera?
- - maybe write profiles, like trump, sanders, cyber, cloud, … (load them from json?)
 
 # Done
 
