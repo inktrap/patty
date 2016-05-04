@@ -1,6 +1,7 @@
 # Bugs
 
  - use firefox version check so a recent version is used (45 is not working)
+ - icon copyright/license (choose/make something better?)
  - <s> none :tada: </s>
 
 # ToDo
