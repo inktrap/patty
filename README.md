@@ -1,6 +1,6 @@
 # Patty
 
-![Patty](https://raw.githubusercontent.com/inktrap/patty/master/image/abstract-1296709_960_720.png)
+![Patty](https://raw.githubusercontent.com/inktrap/patty/master/image/abstract-1296709_192_192.png)
 
 # Bugs
 
