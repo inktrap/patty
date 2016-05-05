@@ -7,16 +7,17 @@
   "description": "Replace text with regular expressions you define.",
   "homepage_url": "https://github.com/inktrap/patty",
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/patty-48.png",
+    "96": "icons/patty-96.png"
   },
 
   "browser_action": {
-    "default_icon": "icons/border-48.png"
+    "default_icon": "icons/patty-96.png"
   },
 
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["http://*/*", "https://*/*"],
       "js": ["content.js"]
     }
   ],
@@ -28,7 +29,7 @@
       "page": "options/options.html"
   },
   "options_page": "options/options.html",
-  "permissions": ["tabs", "storage", "<all_urls>"]
+  "permissions": ["tabs", "storage", "http://*/*" , "https://*/*" ]
 
 }
 

@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 //"use strict";
 
 // the container that holds the rules
@@ -39,16 +40,107 @@ function moveDown(e){
     }
 }
 
-function saveRules(e){
+function exportRules(e){
     e.preventDefault();
-    var new_rules = getFormRules();
-    //console.log("called saveRules");
-    //console.log(JSON.stringify(new_rules));
-    if (new_rules.length > 0){
-        chrome.storage.local.set({'rules' : JSON.stringify(new_rules) });
+    chrome.storage.local.get('rules', function(jsonResult){
+        var exportLink = document.createElement('a');
+        var result = {};
+        result.rules = JSON.parse(jsonResult.rules);
+        console.log(result);
+        var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(result));
+        exportLink.href = 'data:' + data;
+        exportLink.download = 'patty-export.json';
+        exportLink.click();
+    });
+}
+
+function parseFormat(jsonContent){
+    var new_rules = Array();
+    var content = JSON.parse(jsonContent);
+    if (!('rules' in content)){
+        console.log("rules");
+        return false;
+    }
+    if (!(content.rules instanceof Array)){
+        console.log("instance");
+        return false;
+    }
+    for (i=0; i<content.rules.length; i++){
+        if ((content.rules[i].length !== 2) ||
+            (!(typeof content.rules[i][0] === 'string' || content.rules[i][0] instanceof String)) ||
+            (!(typeof content.rules[i][1] === 'string' || content.rules[i][1] instanceof String))){
+                console.log("inner");
+                return false;
+        } else {
+            new_rules.push(Array(content.rules[i][0], content.rules[i][1]));
+        }
+    }
+    return new_rules;
+}
+
+function clearFormRules(){
+    var rulesContainer = document.querySelector('#rules');
+    while (rulesContainer.firstChild){
+        rulesContainer.removeChild(rulesContainer.firstChild);
+    }
+}
+
+function deleteAll(){
+    clearFormRules();
+    saveRules(Array());
+}
+
+function importRules(e){
+    e.preventDefault();
+    var files = e.target.files;
+    var output = [];
+    var reader = new FileReader();
+    var new_rules = Array();
+    reader.onload = function(e){
+        var jsonContent = e.target.result;
+        var rules = parseFormat(jsonContent);
+        if ( rules === false){
+            console.log("Invalid JSON datastructure. Skipping file");
+            return;
+        } else {
+            new_rules.push(rules);
+        }
+    };
+    for (var i = 0; i < files.length; i++) {
+        if (!files[i].type.match('json.*')) {
+          console.log("You can only import json files. Skipping type " + files[i].type);
+          continue;
+        }
+        reader.readAsText(files[i]);
     }
 
-    window.close();
+    chrome.storage.local.get('rules', function(jsonResult){
+        var results = JSON.parse(jsonResult.rules);
+        for (var i = 0; i < new_rules.length; i++){
+            results = results.concat(new_rules[i]);
+        }
+        saveRules(results);
+        clearFormRules();
+        initialize();
+    });
+}
+
+function triggerImportRules(e){
+    e.preventDefault();
+    document.querySelector("#importBtn").click();
+}
+
+function saveRules(new_rules){
+    chrome.storage.local.set({'rules' : JSON.stringify(new_rules) });
+}
+
+function saveCurrentRules(e){
+    e.preventDefault();
+    var new_rules = getFormRules();
+    //console.log(JSON.stringify(new_rules));
+    saveRules(new_rules);
+    // do not  close the window because a user might want to save rules before he imports new ones
+    //window.close();
 }
 
 function makeInput(patternValue="", replaceValue=""){
@@ -116,7 +208,6 @@ function getFormRules() {
 }
 
 function initialize(){
-    //console.log("init");
     chrome.storage.local.get('rules', function(jsonResult){
         if ((jsonResult !== undefined) && (jsonResult !== null) && ('rules' in jsonResult)){
             results = JSON.parse(jsonResult.rules);
@@ -125,13 +216,21 @@ function initialize(){
             }
         } else {
             if (chrome.runtime.lastError){
-            //console.log(chrome.runtime.lastError);
+                console.log(chrome.runtime.lastError);
             }
         }
     });
 }
 
+function initializeProfiles(){
+    xhttp.open("GET", "https://inktrap.org/profile.json", true);
+    xhttp.send();
+}
+
 document.addEventListener('DOMContentLoaded', initialize);
-document.querySelector("form").addEventListener("submit", saveRules);
+document.querySelector("form").addEventListener("submit", saveCurrentRules);
 document.querySelector("#add").addEventListener("click", addRule);
+document.querySelector("#export").addEventListener("click", exportRules);
+document.querySelector("#importBtn").addEventListener("change", importRules);
+document.querySelector("#deleteAll").addEventListener("click", deleteAll);
 

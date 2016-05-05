@@ -1,8 +1,7 @@
 # Bugs
 
- - use firefox version check so a recent version is used (45 is not working)
- - icon copyright/license (choose/make something better?)
  - <s> none :tada: </s>
+
 
 # ToDo
 
@@ -21,6 +20,8 @@
  - x regexes should be compiled only once
  - x always handing over the settings via a parameter -- there has to be a better way … ask on SO (this is not really a bug) (thought about it for a minute and used a class instead of functions …
  - x maybe hide the addon button so it's more pranky? (apps always get an icon or placeholder if they do not define one)
+ x change firefox version so a recent version is used (45 is not working)
+ x icon copyright/license (choose/make something better?). using <https://pixabay.com/en/abstract-animal-art-blue-1296709/> licensed under CC0 Public Domain (Free for commercial use. No attribution required). specificly <https://pixabay.com/static/uploads/photo/2016/03/31/21/53/abstract-1296709_960_720.png>.
 
 # Prerequisites
 

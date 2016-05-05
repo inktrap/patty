@@ -1,0 +1,9 @@
+{
+    "name": "drumpf",
+    "author": "Original Addon",
+    "version": "1.0",
+    "rules": [
+        ["Trump", "Drumpf"],
+        ["trump", "drumpf"]
+    ]
+}

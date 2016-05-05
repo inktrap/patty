@@ -27,5 +27,5 @@ cp "$DEFAULT_MANIFEST" "$MANIFEST"
 
 OUTFILE=${DIR}/${RELEASE_DIR}/${EXT_NAME}_${BROWSER}_${DATE}.${EXT}
 
-cd "$EXT_DIR" && zip -r "${OUTFILE}" ./* -x ./release/\* && cd "$DIR"
+cd "$EXT_DIR" && zip -r "${OUTFILE}" ./* -x ./release/\* ./image/\* ./manifest.firefox ./manifest.default ./tools/\* && cd "$DIR"
 

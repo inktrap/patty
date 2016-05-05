@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-  </head>
+    <link rel="stylesheet" type="text/css" href="options.css">
+</head>
 
 <body>
-  <form id="settings">
-    <fieldset>
-      <legend>Options</legend>
-      <h2>What should we replace?</h2>
-      <p>
-      Substitute all occurrences of <code>pattern</code> with <code>replace</code>.
-      </p>
-      <p>
-      The order is important!
-      </p>
-      <div id="rules">
-      </div>
-      <button id="save" type="submit">Save</button>
-      <button id="add" type="submit">Add Rule</button>
-      <!--
-      <button type="submit">up</button>
-      <button type="submit">down</button>
-      -->
-    </fieldset>
-  </form>
-  <script src="options.js"></script>
+    <form id="settings">
+        <fieldset>
+            <legend>Options</legend>
+            <h2>What should we replace?</h2>
+            <p>
+                Substitute all occurrences of <code>pattern</code> with <code>replace</code>.
+                <a href="help.html#rules">Help</a>
+            </p>
+            <div id="rules">
+            </div>
+            <button id="save" type="submit">Save</button>
+            <button id="add" type="submit">Add Rule</button>
+            <div>
+                <a id="export" class="link">Export</a> to json, which you can also
+                <label for="importBtn" class="link">Import</label>. You can import a <a href="https://github.com/inktrap/patty-profiles">Profile</a> too.
+                <span
+                class="warning">Warning: Save your current rules before you import! Unsafed rules
+                    will be overwritten, because the import has to be saved as
+                    well.</span>
+                    <a href="help.html#profiles">Help</a>.
+                    <input id="importBtn" type="file" name="files[]" style="visibility:hidden" accept=".json"
+                    multiple></input>
+            </div>
+            <button id="deleteAll" type="submit">Delete all rules</button>
+        </fieldset>
+        <!--
+    <form id="profile-settings">
+        <fieldset>
+          <legend>Profiles</legend>
+            <div id="profiles">
+            </div>
+            <button id="update" type="submit">Update</button>
+        </fieldset>
+    </form>
+    -->
+        <script src="options.js"></script>
 </body>
 
 </html>

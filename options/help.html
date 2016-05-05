@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>How to pet patty patty.</title>
+</head>
+
+<body>
+    <h1>Help</h1>
+    <a name="help"></a>
+    <div> <a href="options.html">Back</a> 
+    </div>
+    <h2>Rules</h2>
+    <a name="rules"></a>
+    <p>
+        Pattern can be a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">Regular Expression</a>.
+    </p>
+    <p>
+        The order is important. Rules may change state and are composable.
+        <ul>
+            <li>Changing state: If you have two rules and the first replaces <code>foo</code> with <code>bar</code> and
+                the second replaces <code>foo</code> with <code>bam</code>, then the
+                second rule has nothing to match, because all occurrences of <code>foo</code> have
+                been replaced already.</li>
+            <li>Composability: Likewise, if your first rule substitutes <code>foo</code> with <code>bar</code> and
+                your second rule replaces <code>bar</code> with <code>bam</code>,
+                you could change that to one rule that replaces <code>foo</code> with <code>bam</code>.</li>
+        </ul>
+    </p>
+    <h2>Profiles</h2>
+    <a name="profiles"></a>
+    <p>
+        Profiles are small json files that define patterns. I prepared some profiles so
+        you can activate them easily and don't have to write them yourself:
+        <ul>
+            <li>Trump to Drumpf</li>
+            <li>Cruz to Some Canadian Asshole (as requested)</li>
+            <li>Cyber to Bullshit</li>
+            <li>Cloud to Butt</li>
+            <li>Grammar Nazi</li>
+        </ul>
+    </p>
+    <h1>Contributions</h1>
+    <a name="contributions"></a>
+    You can contribute to the profiles:
+    <ul>
+        <li>fork the <a href="">repository</a>
+        </li>
+        <li>if you introduce a new profile, create a new branch</li>
+        <li>write your commit message in present tense</li>
+        <li>issue a pull request</li>
+    </ul>
+    I am looking forward to get your feedback and suggestions, but please remember
+    that this is my first extension and obviously an experiment. :)
+    <div> <a href="options.html">Back</a> 
+    </div>
+</body>
+
+</html>

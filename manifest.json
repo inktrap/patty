@@ -1,43 +1,35 @@
 {
-  "applications": {
-    "gecko": {
-      "id": "extension-patty@inktrap.org",
-      "strict_min_version": "45.0"
-    }
-  },
+
   "manifest_version": 2,
   "name": "Patty",
   "version": "1.0",
+
   "description": "Replace text with regular expressions you define.",
   "homepage_url": "https://github.com/inktrap/patty",
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/patty-48.png",
+    "96": "icons/patty-96.png"
   },
+
   "browser_action": {
-    "default_icon": "icons/border-48.png"
+    "default_icon": "icons/patty-96.png"
   },
+
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "content.js"
-      ]
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"]
     }
   ],
+
   "background": {
-    "scripts": [
-      "background.js"
-    ]
-  },
+      "scripts": ["background.js"]
+    },
   "options_ui": {
-    "page": "options/options.html"
+      "page": "options/options.html"
   },
   "options_page": "options/options.html",
-  "permissions": [
-    "tabs",
-    "storage",
-    "<all_urls>"
-  ]
+  "permissions": ["tabs", "storage", "http://*/*" , "https://*/*" ]
+
 }
+

@@ -26,9 +26,11 @@ if [[ -f $MANIFEST ]]; then
     rm "$MANIFEST"
 fi
 
+set -x
 jq -s add $FIREFOX_MANIFEST $DEFAULT_MANIFEST > $MANIFEST
+set +x
 OUTFILE=${DIR}/${RELEASE_DIR}/${EXT_NAME}_${BROWSER}_${DATE}.${EXT}
-cd "$EXT_DIR" && zip -r "${OUTFILE}" ./* -x ./release/\* && cd "$DIR"
+cd "$EXT_DIR" && zip -r "${OUTFILE}" ./* -x ./release/\* ./image/\* ./manifest.firefox ./manifest.default ./tools/\* && cd "$DIR"
 
 if [[ $DEV == true ]]; then
     curl -4 --data-binary "@${OUTFILE}" -H 'Expect:' "http://127.0.0.1:${PORT}/"
