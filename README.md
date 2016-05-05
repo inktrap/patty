@@ -1,3 +1,7 @@
+# Patty
+
+![Patty](https://raw.githubusercontent.com/inktrap/patty/master/image/abstract-1296709_960_720.png)
+
 # Bugs
 
  - <s> none :tada: </s>

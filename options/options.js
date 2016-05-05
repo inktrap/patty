@@ -46,7 +46,7 @@ function exportRules(e){
         var exportLink = document.createElement('a');
         var result = {};
         result.rules = JSON.parse(jsonResult.rules);
-        console.log(result);
+        //console.log(result);
         var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(result));
         exportLink.href = 'data:' + data;
         exportLink.download = 'patty-export.json';
