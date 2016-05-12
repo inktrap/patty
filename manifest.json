@@ -4,7 +4,7 @@
   "name": "Patty",
   "version": "1.0",
 
-  "description": "Replace text with regular expressions you define.",
+  "description": "Replace text by regular expressions you define.",
   "homepage_url": "https://github.com/inktrap/patty",
   "icons": {
     "48": "icons/patty-48.png",

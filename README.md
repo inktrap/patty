@@ -7,6 +7,7 @@ This is patty, who likes patterns.
 
  - catch json could not be parsed exception
  - catch reader already reading exception and wait
+ - import/export not working in firefox
  - <s> none :tada: </s>
 
 # ToDo
@@ -14,6 +15,9 @@ This is patty, who likes patterns.
  - signing and mozilla/chrome addon account
  - prepare json files (cyber, cloud)
  - clean and style gui
+ - automate build process,
+    - see <https://github.com/willsALMANJ/pentadactyl-signed>
+    - and <https://github.com/ffledgling/dactyl-build/>
  - be proud & happy!!! first addon :) yay <3 :tada: :clap: :smile:
 
 # Maybe
